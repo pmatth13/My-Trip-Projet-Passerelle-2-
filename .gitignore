@@ -1,0 +1,18 @@
+# Fichiers système
+.DS_Store
+Thumbs.db
+
+# Dossiers temporaires
+node_modules/
+vendor/
+
+# Fichiers sensibles
+config.php
+.env
+
+# Fichiers vidéos lourds
+*.MP4
+*.mov
+*.mp4
+*.avi
+*.mkv
