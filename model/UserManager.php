@@ -30,37 +30,37 @@
 
         public function emailExists($email){
 
-        //Connexion à la BDD
-        $db = $this->dbConnect();
+            //Connexion à la BDD
+            $db = $this->dbConnect();
 
-        //Requête pour chercher l'émail
-        $requete = $db->prepare('SELECT COUNT(*) FROM users WHERE email = :email');
-        $requete->execute([':email' => $email]);
+            //Requête pour chercher l'émail
+            $requete = $db->prepare('SELECT COUNT(*) FROM users WHERE email = :email');
+            $requete->execute([':email' => $email]);
 
-        //Récupére le résultat (0 ou 1)
-        $count = $requete->fetchColumn();
+            //Récupére le résultat (0 ou 1)
+            $count = $requete->fetchColumn();
 
-        //Retourne true si au moins 1 ligne sinon false = 0
-        return $count >0;
+            //Retourne true si au moins 1 ligne sinon false = 0
+            return $count >0;
         }
 
         public function loginUser($email, $password){
 
-        //Connexion à la BDD
-        $db = $this->dbConnect();
+            //Connexion à la BDD
+            $db = $this->dbConnect();
 
-        //Chercher l'utilisateur par email
-        $requete = $db->prepare('SELECT * FROM users WHERE email = :email');
-        $requete->execute([':email' => $email]);
+            //Chercher l'utilisateur par email
+            $requete = $db->prepare('SELECT * FROM users WHERE email = :email');
+            $requete->execute([':email' => $email]);
 
-        //Récupère les données
-        $user = $requete->fetch(PDO::FETCH_ASSOC); //1 ligne tableau associatif
+            //Récupère les données
+            $user = $requete->fetch(PDO::FETCH_ASSOC); //1 ligne tableau associatif
 
-        //Verifie si l'user existe & si mdp correspond
-        if ($user && password_verify($password, $user['password'])){
-            return $user; //Toutes les infos de l'user dans la db sauf le mdp
-        }
+            //Verifie si l'user existe & si mdp correspond
+            if ($user && password_verify($password, $user['password'])){
+                return $user; //Toutes les infos de l'user dans la db sauf le mdp
+            }
 
-        return false; // Email ou mdp incorrect
+            return false; // Email ou mdp incorrect
         }
     }
