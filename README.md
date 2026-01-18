@@ -6,3 +6,8 @@ Feuille de route :
     -création de la classe en POO
     -création de la méthode dbConnect() avec protected pour rendre accessible par toute les classes
 4.Création du fichier UserManager.php
+    -création de emailExists($email)
+    -création de registerUser($pseudo, $email, $password)
+    -création de loginUser($email, $password)
+5.Création du fichier controller.php
+    -création de registerUserController
