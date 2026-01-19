@@ -25,7 +25,7 @@
             break;
         
         case 'home':
-            echo "Page d'accueil (à créer)";
+            homeController();
             break;
 
         default:

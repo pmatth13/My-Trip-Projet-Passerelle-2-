@@ -15,3 +15,8 @@ Feuille de route :
 7.Création de registerView.php
 8. Modification du controller pour vérifier si des données ont été envoyées
 9.Création du fichier loginView.php
+10. Création de base.php (template)
+    -Modification dans tout les fichiers du dosssier View 
+    -Modification du controller pour appeler les bonnes views
+    -création de homeView pour la page d'accueil avec la template
+11.Ajout de la function homeController().

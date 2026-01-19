@@ -28,8 +28,8 @@
             }
         } else {
 
-            // Afficher le formulaire d'inscription
-            require 'view/registerView.php';
+            $viewFile = 'view/registerView.php'; // la bonne View
+            require 'view/base.php';             // Inclut base.php qui inclura $viewFile
         }
     }
 
@@ -52,7 +52,13 @@
             }
         } else {
 
-            // Afficher le formulaire 
-            require 'view/loginView.php';
+            $viewFile = 'view/loginView.php'; // la bonne View
+            require 'view/base.php';          // Inclut base.php qui inclura $viewFile
         }
+    }
+
+    function homeController(){
+
+        $viewFile = 'view/homeView.php';
+        require 'view/base.php';
     }
