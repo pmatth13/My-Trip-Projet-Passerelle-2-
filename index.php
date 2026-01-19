@@ -1,5 +1,8 @@
 <?php 
 
+    //Démarrage de la session
+    session_start();
+
     // Inclusion du contrôleur
     require_once 'controller/controller.php';
 
@@ -27,8 +30,16 @@
         case 'home':
             homeController();
             break;
+        
+        case 'logout':
+            logoutController();
+            break;
+
+        case 'test_protected':
+            testProtectedController();
+            break;
 
         default:
-            echo "Erreur 404 - Page non trouvée";
+            errorController();
             break;
     }

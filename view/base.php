@@ -12,8 +12,19 @@
         <h1>MyTrip | Les aventures de Joe et P-M</h1>
         <nav>
             <a href="index.php">Accueil</a>
-            <a href="index.php?action=register">Inscription</a>
-            <a href="index.php?action=login">Connexion</a>
+
+            <?php if (isset($_SESSION['pseudo'])): // TEST pour savoir si SESSION active ?> 
+
+                <!-- Utilisateur connecté -->
+                 <span>Bonjour <?php echo $_SESSION['pseudo']; ?> !</span>
+                 <a href="index.php?action=logout">Déconnexion</a>
+            
+            <?php else: ?>
+
+                <!-- Utilisateur NON connecté -->
+                <a href="index.php?action=register">Inscription</a>
+                <a href="index.php?action=login">Connexion</a>
+            <?php endif; ?>
         </nav>
     </header>
 
