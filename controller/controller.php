@@ -95,12 +95,27 @@
         require 'view/base.php';
     }
 
+    function philippinesController(){
 
-    function testProtectedController(){
-
-    isConnected(); // ← La barrière de sécurité !
-    
-    // Si on arrive ici, c'est que l'utilisateur est connecté
-    $viewFile = 'view/testProtectedView.php';
-    require 'view/base.php';
+        $viewFile = 'view/philippinesView.php';
+        require 'view/base.php';
     }
+    
+    function vietnamController(){
+
+        $viewFile = 'view/vietnamView.php';
+        require 'view/base.php';
+    }
+
+    function japanController(){
+
+        $viewFile = 'view/japanView.php';
+        require 'view/base.php';
+    }
+
+    function indonesiaController(){
+
+        $viewFile = 'view/indonesiaView.php';
+        require 'view/base.php';
+    }
+

@@ -35,8 +35,20 @@
             logoutController();
             break;
 
-        case 'test_protected':
-            testProtectedController();
+        case 'philippines':
+            philippinesController();
+            break;
+        
+        case 'vietnam':
+            vietnamController();
+            break;
+        
+        case 'japan':
+            japanController();
+            break;
+        
+        case 'indonesia':
+            indonesiaController();
             break;
 
         default:
