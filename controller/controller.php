@@ -140,7 +140,7 @@
         require 'view/base.php';
     }
 
-/* --------------------------------------------------------Création d'article de blog----------------------------------------------------- */
+/* --------------------------------------------------------Création/Modification/Suprression d'article de blog----------------------------------------------------- */
 
     function createArticleController(){
 
@@ -181,6 +181,97 @@
         // Afficher la vue
         $viewFile = 'view/articleListView.php';
         require 'view/base.php';
+    }
+
+    function articleController(){
+
+        // Récupère l'ID depuis l'URL
+        if (isset($_GET['id']) && !empty($_GET['id'])){  //Verifie que l'ID existe et n'est pas vide (sécurité)
+            $id = $_GET['id'];
+    
+        //Récupérer l'article
+        $articleManager = new ArticleManager();
+        $article = $articleManager->getArticleById($id);
+
+        //Afficher la vue
+        $viewFile = 'view/articleView.php';
+        require 'view/base.php';
+
+        } else {
+
+            // Pas d'ID dans l'URL -> Redirection vers la liste d'article
+            header('Location: index.php?action=articles');
+            exit;
+        }
+    }
+
+    function editArticleController(){
+
+        // Vérifier que c'est l'admin:
+            isAdmin();
+        
+        // Récupérer l'ID depuis l'URL
+        if (isset($_GET['id']) && !empty($_GET['id'])) {
+            $id = $_GET['id'];
+
+            // Vérifier que les données POST ont été envoyées
+            if (!empty($_POST)) {
+
+            // Scénario 2 : Traiter l'update
+            $title = $_POST['title'];
+            $content = $_POST['content'];
+            $destination = $_POST['destination'];
+
+            // MAJ de l'article
+            $articleManager = new ArticleManager();
+            $articleManager->updateArticle($id, $title, $content, $destination); // Modification de la BDD
+
+            // Rediriger vers l'article modifié
+            header('Location: index.php?action=article&id='.$id);
+            exit;
+
+            } else {
+
+                // Scénario 1 : Afficher le formulaire pré-rempli
+                $articleManager = new ArticleManager();
+                $article = $articleManager->getArticleById($id);
+
+                $viewFile = 'view/editArticleView.php';
+                require 'view/base.php';
+            }
+
+        } else {
+
+                // Pas d'ID -> Donc redirection vers la liste d'article
+                header('Location: index.php?action=articles');
+                exit;
+        }
+
+    }
+
+    function deleteArticleController(){
+
+        // Vérifier que c'est l'admin:
+                isAdmin();
+
+        //  Récupérer l'ID depuis l'URL
+        if (isset($_GET['id']) && !empty($_GET['id'])) {
+            $id = $_GET['id'];
+
+            // Supprimer l'article
+            $articleManager = new ArticleManager();
+            $articleManager->deleteArticle($id); //Suppression de la BDD
+
+            // Rediriger vers la liste d'article
+            header('Location: index.php?action=articles');
+            exit;
+        
+        } else {
+
+        // Pas d'ID -> Redirection vers la liste d'article
+        header('Location: index.php?action=articles');
+            exit;
+        }
     }
 
 

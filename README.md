@@ -52,4 +52,14 @@ Feuille de route :
 25. Création d'une méthode pour afficher un article en entier
     - Ajout d'une méthode getArticleById(); avec ArticleManager.php
     - Création de la vue pour afficher l'article articleView.php
-26. 
+26. Création de l'onglet "Journal de bord" dans le header.
+27. Ajout de update dans la création d'article.
+    - Dans ArticleManager.php ajout de la function updateArticle();
+    - creation de editArticleView.php
+    - création du controller editArticleController()
+    - Ajout au routeur index.php
+28. Ajout de la fonction Delete pour supprimer un article
+    - Ajout de la function deleteArticle(); dans ArticleManager.php
+    - Création du controller deleteArticleController(); 
+    - Ajout au routeur index.php
+29. 

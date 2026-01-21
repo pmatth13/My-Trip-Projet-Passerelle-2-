@@ -58,6 +58,18 @@
         case 'articles' :
             articlesListController();
             break;
+        
+        case 'article':
+            articleController();
+            break;
+        
+        case 'edit_article' :
+            editArticleController();
+            break;
+        
+        case 'delete_article':
+            deleteArticleController();
+            break;
 
         default:
             errorController();

@@ -1,4 +1,4 @@
-<h2>Mes articles de voyage</h2>
+<h2>Mon journal de bord : toutes mes aventures !</h2>
 
 <?php if (empty($articles)): ?>
     <p>Aucun article publié pour le moment.</p>

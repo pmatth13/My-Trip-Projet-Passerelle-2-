@@ -42,12 +42,45 @@
             $db = $this->dbConnect();
 
             //Requête PREPARER pour recupérer UN seul article par son ID
-            $requete = $db->prepare('SELECT * FROM articles WHERE id = id');
+            $requete = $db->prepare('SELECT * FROM articles WHERE id = :id');
             $requete->execute([':id' => $id]);
 
             //Récupère l'article
             $article = $requete->fetch(PDO::FETCH_ASSOC);
 
             return $article;
+        }
+
+        public function updateArticle($id, $title, $content, $destination){
+
+            // Connexion à la BDD
+            $db = $this->dbConnect();
+
+            // Requête pour l'UPDATE
+            $requete = $db->prepare('UPDATE articles SET title = :title, content = :content, destination = :destination WHERE id = :id');
+
+            // Exécution
+            $requete->execute([
+                ':title' => $title,
+                ':content' => $content,
+                ':destination' => $destination,
+                ':id' => $id
+            ]);
+
+            return true;
+        }
+
+        public function deleteArticle($id){
+
+            // Connexion à la BDD
+            $db = $this->dbConnect();
+
+            // Requête pour DELETE
+            $requete = $db->prepare('DELETE FROM articles WHERE id = :id');
+
+            // Exécution
+            $requete->execute([':id' => $id]);
+
+            return true;
         }
     }

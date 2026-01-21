@@ -16,6 +16,7 @@
             <a href="index.php?action=vietnam">Vietnam</a>
             <a href="index.php?action=japan">Japon</a>
             <a href="index.php?action=indonesia">Indonésie</a>
+            <a href="index.php?action=articles">Journal de bord</a>
     
         <?php if (isset($_SESSION['pseudo'])): ?>
             <span>Bonjour <?php echo $_SESSION['pseudo']; ?> !</span>
