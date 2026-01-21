@@ -50,6 +50,14 @@
         case 'indonesia':
             indonesiaController();
             break;
+        
+        case 'create_article':
+            createArticleController();
+            break;
+
+        case 'articles' :
+            articlesListController();
+            break;
 
         default:
             errorController();

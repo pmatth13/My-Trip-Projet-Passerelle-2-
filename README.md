@@ -38,3 +38,18 @@ Feuille de route :
     - dans le dossier View
     - Ajout du controller 
     - Ajout du routeur
+19. Création de la table articles avec 6 colonnes
+20. Création de ArticleManager.php dans model/
+21. Création de la fonction isAdmin(); dans controller.php
+22. Création de createArticleView.php
+23. Création du controller pour gérer le formulaire de création d'article
+    - Ajout de require_once 'ArticleManager.php' au début du fichier 
+    - Ajout de la fonction createArticleController();
+    - Ajout au routeur dans index.php
+24. Création de articleListView.php pour afficher les articles
+    - Création du controller pour afficher la list d'article
+    - Ajout au routeur index.php
+25. Création d'une méthode pour afficher un article en entier
+    - Ajout d'une méthode getArticleById(); avec ArticleManager.php
+    - Création de la vue pour afficher l'article articleView.php
+26. 

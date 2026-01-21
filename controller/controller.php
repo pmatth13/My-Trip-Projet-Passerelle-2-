@@ -3,14 +3,33 @@
     // Import des modèles nécessaire 
     require_once 'model/Manager.php';
     require_once 'model/UserManager.php';
+    require_once 'model/ArticleManager.php';
 
     // Fonction pour vérifier la connexion
     function isConnected(){
 
         if(!isset($_SESSION['user_id'])){
             header('Location: index.php?action=login');
+            exit;
         }
     }
+
+    // Fonction pour vérifier si l'user est l'admin
+    function isAdmin(){
+
+        //Verifier si l'user est connecté
+        isConnected();
+
+        //Verifier si l'user est id=1 (=admin)
+        if($_SESSION['user_id'] !== 1){
+
+            // Pas admin on redirige à l'accueil
+            header('Location: index.php');
+            exit;
+        }
+    }
+
+    /* -----------------------------------------------AUTHENTIFICATION--------------------------------------------------- */
 
     function registerUserController(){
         
@@ -83,6 +102,8 @@
         exit;
     }
 
+/* ----------------------------------------------------------Liste des pages--------------------------------------------------- */
+
     function homeController(){
 
         $viewFile = 'view/homeView.php';
@@ -118,4 +139,49 @@
         $viewFile = 'view/indonesiaView.php';
         require 'view/base.php';
     }
+
+/* --------------------------------------------------------Création d'article de blog----------------------------------------------------- */
+
+    function createArticleController(){
+
+        // Vérification que c'est l'admin
+        isAdmin();
+
+        // Vérification de l'envoi des données POST
+        if (!empty($_POST)){
+
+            // Si true alors: on récupère les infos
+            $title = $_POST['title'];
+            $content = $_POST['content'];
+            $destination = $_POST['destination'];
+            $author_id = $_SESSION['user_id']; // Admin connecté
+
+            // Création de l'article
+            $articleManager = new ArticleManager();
+            $articleManager->createArticle($title, $content, $destination, $author_id);
+
+            // Rediriger vers l'accueil
+            header('Location: index.php');
+            exit;
+
+        } else {
+
+            // Si False alors:
+            $viewFile= 'view/createArticleView.php';
+            require 'view/base.php';
+        }
+    }
+
+    function articlesListController(){
+
+        // Récupère tout les articles
+        $articleManager = new ArticleManager();
+        $articles = $articleManager->getAllArticles(); //$articles est accessible dans la vue de articlesListView.php
+
+        // Afficher la vue
+        $viewFile = 'view/articleListView.php';
+        require 'view/base.php';
+    }
+
+
 
