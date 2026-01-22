@@ -3,20 +3,21 @@
     class ArticleManager extends Manager {
 
         // Méthode pour gérer les articles
-        public function createArticle($title, $content, $destination, $author_id){
+        public function createArticle($title, $content, $destination, $author_id, $image_url = null){
 
             //Connexion à la BDD
             $db = $this->dbConnect();
 
             //Requête préparée
-            $requete = $db->prepare('INSERT INTO articles (title, content, destination, author_id) VALUES (:title, :content, :destination, :author_id)');
+            $requete = $db->prepare('INSERT INTO articles (title, content, destination, author_id, image_url) VALUES (:title, :content, :destination, :author_id, :image_url)');
 
             // Execute la requête
             $requete->execute([
                 ':title'       => $title,
                 ':content'     => $content,
                 ':destination' => $destination,
-                ':author_id'   => $author_id
+                ':author_id'   => $author_id,
+                ':image_url'   => $image_url
             ]);
 
             return true;
@@ -51,21 +52,31 @@
             return $article;
         }
 
-        public function updateArticle($id, $title, $content, $destination){
+        public function updateArticle($id, $title, $content, $destination, $image_url = null){
 
             // Connexion à la BDD
             $db = $this->dbConnect();
 
-            // Requête pour l'UPDATE
-            $requete = $db->prepare('UPDATE articles SET title = :title, content = :content, destination = :destination WHERE id = :id');
-
-            // Exécution
-            $requete->execute([
-                ':title' => $title,
-                ':content' => $content,
-                ':destination' => $destination,
-                ':id' => $id
-            ]);
+            // Si une nouvelle image est fournie, on la met à jour
+            if ($image_url !== null) {
+                $requete = $db->prepare('UPDATE articles SET title = :title, content = :content, destination = :destination, image_url = :image_url WHERE id = :id');
+                $requete->execute([
+                    ':title' => $title,
+                    ':content' => $content,
+                    ':destination' => $destination,
+                    ':image_url' => $image_url,
+                    ':id' => $id
+                ]);
+            } else {
+                // Sinon on garde l'image existante
+                $requete = $db->prepare('UPDATE articles SET title = :title, content = :content, destination = :destination WHERE id = :id');
+                $requete->execute([
+                    ':title' => $title,
+                    ':content' => $content,
+                    ':destination' => $destination,
+                    ':id' => $id
+                ]);
+            }
 
             return true;
         }

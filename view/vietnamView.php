@@ -1,23 +1,91 @@
-<div class="destination">
-    <h2>🇻🇳 Vietnam</h2>
-    
-    <section>
-        <h3>Notre voyage au Vietnam</h3>
-        <p>Explorez avec nous ce pays fascinant, entre tradition et modernité !</p>
-        
-        <h4>Highlights du voyage :</h4>
-        <ul>
-            <li>Vieille ville de Hanoï et ses temples</li>
-            <li>Croisière dans la Baie d'Halong</li>
-            <li>Roadtrip à moto à travers les montagnes Vietnamienne</li>
-            <li>Street food authentique de Hoi An</li>
-        </ul>
-        
-        <h4>Infos pratiques :</h4>
-        <p><strong>Durée :</strong> 1 mois</p>
-        <p><strong>Meilleure période :</strong> Février à Avril</p>
-        <p><strong>Budget :</strong> Très abordable, environ 25-35€/jour</p>
-    </section>
-    
-    <p><em>Plus d'articles et de photos à venir sur cette destination !</em></p>
-</div>
+<!-- TITRE CENTRÉ -->
+<section class="country-title py-5 text-center">
+    <div class="container">
+        <h1 class="display-3 fw-bold">Vietnam</h1>
+    </div>
+</section>
+
+<!-- GRANDE IMAGE HERO -->
+<section class="country-hero">
+    <div class="container">
+        <img src="/my_trip/public/asset/photo_vietnam.png" alt="Vietnam" class="img-fluid d-block mx-auto rounded hero-image">
+    </div>
+</section>
+
+<!-- DESCRIPTION -->
+<section class="country-description py-5">
+    <div class="container">
+        <div class="row justify-content-center">
+            <div class="col-md-8">
+                <p class="lead">
+                    Je suis parti un mois au Vietnam pour un voyage aussi intense qu’inoubliable.<br>
+                    Tout a commencé à Hoi An, entre lanternes lumineuses, vieilles maisons et douceur de vivre.<br>
+                    J’ai ensuite mis le cap sur la baie d’Ha Long, où j’ai navigué au cœur de paysages brumeux et majestueux.<br>
+                    Après une immersion dans l’énergie bouillonnante de Hanoï, j’ai enfourché une moto pour un road trip vers le nord du pays.<br>
+                    De Sapa à Cao Bằng, la route m’a fait traverser des montagnes vertigineuses, des rizières à perte de vue et des villages reculés,<br>
+                    jusqu’à la spectaculaire montagne percée, point d’orgue de cette aventure hors du commun.
+
+                </p>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- VIDÉO -->
+<section class="country-video py-5">
+    <div class="container">
+        <div class="row justify-content-center">
+            <div class="col-md-8">
+                <h3 class="text-center mb-4">Découvrez en vidéo</h3>
+                <div class="ratio ratio-16x9 video-frame">
+                    <video controls>
+                        <source src="/my_trip/public/asset/video_vietnam.MP4" type="video/mp4">
+                        Votre navigateur ne supporte pas ce format vidéo.
+                    </video>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- ARTICLES SUR CE PAYS -->
+<section class="country-articles articles-section py-5">
+    <div class="container">
+        <h2 class="text-center mb-5">Mes Articles sur le Vietnam</h2>
+
+        <?php if (!empty($articles)): ?>
+
+        <div class="row">
+            <?php foreach ($articles as $article): ?>
+
+                <!-- Card Article -->
+                <div class="col-md-4 mb-4">
+                    <div class="card h-100 article-card">
+                       <img src="<?= !empty($article['image_url']) ? htmlspecialchars($article['image_url']) : '/my_trip/public/asset/default-cover.jpg' ?>"
+                            class="card-img-top"
+                            alt="<?= htmlspecialchars($article['title']) ?>">
+                        <div class="card-body">
+                            <h5 class="card-title"><?= htmlspecialchars($article['title']) ?></h5>
+                            <p class="card-text">
+                                <?= htmlspecialchars(mb_strimwidth(html_entity_decode(strip_tags($article['content'])), 0, 100, '...')) ?>
+                            </p>
+                            <p class="text-muted small">
+                                <?= htmlspecialchars($article['destination']) ?>
+                            </p>
+                        </div>
+                        <div class="card-footer bg-transparent border-0">
+                            <a href="index.php?action=article&id=<?= $article['id'] ?>"
+                               class="btn btn-primary w-100">Lire la suite</a>
+                        </div>
+                    </div>
+                </div>
+
+            <?php endforeach; ?>
+        </div>
+
+        <?php else: ?>
+            <p class="text-center text-muted">Aucun article pour le moment sur cette destination.</p>
+        <?php endif; ?>
+
+    </div>
+</section>

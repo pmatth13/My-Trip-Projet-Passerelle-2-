@@ -1,0 +1,203 @@
+// Mes styles perso'
+
+
+body {
+  background-image: linear-gradient(to top right, #a8edea 31%, #f2e9a6 100%);
+  background-attachment: fixed;
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+}
+
+.navbar-logo{
+
+    height: 120px;
+    width: auto;
+}
+
+.navbar-nav{
+    align-items: center;
+}
+
+/* -- J'ai stylisé le bouton navbar */
+
+.navbar-toggler[aria-expanded="true"] span:nth-child(1) {
+  transform: rotate(45deg) translate(6px, 6px);
+}
+
+.navbar-toggler[aria-expanded="true"] span:nth-child(2) {
+  opacity: 0;
+}
+
+.navbar-toggler[aria-expanded="true"] span:nth-child(3) {
+  transform: rotate(-45deg) translate(6px, -6px);
+}
+
+.navbar-dark {
+  background-color: transparent;
+}
+
+
+.navbar-toggler-icon {
+    border: none;
+    background: transparent;
+    display: block;
+    width: 28px;
+    height: 3px;
+    background-color: $my-blue;
+    margin: 6px 0;
+    border-radius: 5px;
+    transition: 0.3s;
+  }
+
+ // Menu déroulant positionné à droite //
+@media (max-width: 991.98px) {
+  .navbar .container-fluid {
+    position: relative;
+  }
+
+  .navbar-collapse {
+    position: absolute;
+    top: 100%;
+    right: 0;
+    left: auto;
+    width: auto;
+    min-width: 200px;
+    padding: 1rem;
+    border-radius: 8px;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+  }
+}
+
+// Style des liens
+.nav-link{
+    font-size: 1.25rem;
+    font-weight: 500;
+    color: $my-blue;
+    padding: 0.5rem 1rem;
+    transition: all 0.3s ease;
+    border-radius: 5px;
+
+    &:hover {
+            color: $my-red;
+            background-color: rgba(255, 255, 255, 0.1);
+            transform: translateY(-2px);
+        }
+}
+
+// Boutons avec bordure
+.nav-btn {
+    border: 2px solid $my-blue;
+}
+
+// Bouton Accueil
+.nav-home {
+    font-weight: 900;
+    font-style: italic;
+    text-transform: uppercase;
+}
+
+/* --------------------------------------------- Page Pays (Philippines, etc.) ----------------------------------------------- */
+
+.country-hero {
+  .hero-image {
+    border: 5px solid $my-blue;
+    border-radius: 10px;
+  }
+}
+
+.country-video {
+  .video-frame {
+    border: 5px solid $my-blue;
+    border-radius: 10px;
+    overflow: hidden;
+  }
+}
+
+/* --------------------------------------------- Page d'accueil--------------------------------------------------------------- */
+
+.profile-section {
+  padding: 4rem 0;
+  
+  .profile-image-container {
+    display: inline-block;
+  }
+  
+  .profile-image {
+    width: 300px;
+    height: 300px;
+    border-radius: 50%; // Rend l'image ronde
+    object-fit: cover; // Garde les proportions sans déformer
+    border: 5px solid $my-blue; // Bordure bleue
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2); // Ombre légère
+    transition: transform 0.3s ease;
+    
+    &:hover {
+      transform: scale(1.05); // Agrandit légèrement au survol
+    }
+  }
+  
+  h1 {
+    color: $my-dark;
+    font-weight: bold;
+    font-size: 2.5rem;
+  }
+  
+  .lead {
+    font-size: 1.2rem;
+    line-height: 1.8;
+  }
+}
+
+/* ---------------------------------------------Style des cards------------------------------------------------------------- */
+
+.articles-section {
+  
+  .article-card {
+    border: none;
+    border-radius: 10px;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+    transition: all 0.3s ease;
+    overflow: hidden; // Pour les bords arrondis de l'image
+    
+    &:hover {
+      transform: translateY(-10px);
+      box-shadow: 0 8px 20px rgba(0, 0, 0, 0.2);
+    }
+    
+    .card-img-top {
+      height: 200px;
+      object-fit: cover; // L'image remplit sans déformer
+      border-radius: 10px 10px 0 0; // Coins arrondis en haut
+    }
+    
+    .card-title {
+      color: $my-dark;
+      font-weight: bold;
+      font-size: 1.2rem;
+    }
+    
+    .card-text {
+      color: #666;
+      line-height: 1.6;
+    }
+    
+    .card-footer {
+      padding: 1rem;
+      
+      .btn-primary {
+        background-color: $my-blue;
+        border: none;
+        padding: 0.75rem;
+        font-weight: 600;
+        border-radius: 5px;
+        transition: all 0.3s ease;
+        
+        &:hover {
+          background-color: darken($my-blue, 10%);
+          transform: scale(1.05);
+        }
+      }
+    }
+  }
+}

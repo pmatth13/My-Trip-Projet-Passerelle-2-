@@ -1,23 +1,89 @@
-<div class="destination">
-    <h2>🇯🇵 Japon</h2>
-    
-    <section>
-        <h3>Notre voyage au Japon</h3>
-        <p>Le pays du Soleil-Levant, entre tradition millénaire et technologie de pointe !</p>
-        
-        <h4>Highlights du voyage :</h4>
-        <ul>
-            <li>Tokyo, la métropole futuriste</li>
-            <li>Temples et sanctuaires de Kyoto</li>
-            <li>Vue sur le Mont Fuji et découverte des Alpes Japonaise</li>
-            <li>Streetfood à Osaka</li>
-        </ul>
-        
-        <h4>Infos pratiques :</h4>
-        <p><strong>Durée :</strong> 3 semaines</p>
-        <p><strong>Meilleure période :</strong> Mars-Avril (cerisiers) ou Octobre-Novembre</p>
-        <p><strong>Budget :</strong> Plus cher, environ 80-100€/jour</p>
-    </section>
-    
-    <p><em>Plus d'articles et de photos à venir sur cette destination !</em></p>
-</div>
+<!-- TITRE CENTRÉ -->
+<section class="country-title py-5 text-center">
+    <div class="container">
+        <h1 class="display-3 fw-bold">Japon</h1>
+    </div>
+</section>
+
+<!-- GRANDE IMAGE HERO -->
+<section class="country-hero">
+    <div class="container">
+        <img src="/my_trip/public/asset/photo_japon.png" alt="Japon" class="img-fluid d-block mx-auto rounded hero-image">
+    </div>
+</section>
+
+<!-- DESCRIPTION -->
+<section class="country-description py-5">
+    <div class="container">
+        <div class="row justify-content-center">
+            <div class="col-md-8">
+                <p class="lead">
+                    Un jour de canicule à Hanoï, sur un coup de tête, nous avons décidé de fuir la chaleur étouffante et de partir au Japon.<br>
+                    Direction Tokyo, première immersion dans une ville fascinante, entre modernité démesurée et traditions bien ancrées.<br>
+                    Nous avons ensuite pris la route vers les Alpes japonaises, avec une parenthèse nature à Kamikōchi, au cœur de paysages frais et spectaculaires.<br>
+                    Le voyage s’est poursuivi à Kyoto, puis à Nara et Osaka, entre temples paisibles, rues animées et découvertes culinaires.<br>
+                    Une escapade improvisée, mais parfaitement équilibrée entre grandes villes, nature et culture japonaise.
+                </p>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- VIDÉO -->
+<section class="country-video py-5">
+    <div class="container">
+        <div class="row justify-content-center">
+            <div class="col-md-8">
+                <h3 class="text-center mb-4">Découvrez en vidéo</h3>
+                <div class="ratio ratio-16x9 video-frame">
+                    <video controls>
+                        <source src="/my_trip/public/asset/video_japon.mov" type="video/quicktime">
+                        Votre navigateur ne supporte pas ce format vidéo.
+                    </video>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- ARTICLES SUR CE PAYS -->
+<section class="country-articles articles-section py-5">
+    <div class="container">
+        <h2 class="text-center mb-5">Mes Articles sur le Japon</h2>
+
+        <?php if (!empty($articles)): ?>
+
+        <div class="row">
+            <?php foreach ($articles as $article): ?>
+
+                <!-- Card Article -->
+                <div class="col-md-4 mb-4">
+                    <div class="card h-100 article-card">
+                       <img src="<?= !empty($article['image_url']) ? htmlspecialchars($article['image_url']) : '/my_trip/public/asset/default-cover.jpg' ?>"
+                            class="card-img-top"
+                            alt="<?= htmlspecialchars($article['title']) ?>">
+                        <div class="card-body">
+                            <h5 class="card-title"><?= htmlspecialchars($article['title']) ?></h5>
+                            <p class="card-text">
+                                <?= htmlspecialchars(mb_strimwidth(html_entity_decode(strip_tags($article['content'])), 0, 100, '...')) ?>
+                            </p>
+                            <p class="text-muted small">
+                                <?= htmlspecialchars($article['destination']) ?>
+                            </p>
+                        </div>
+                        <div class="card-footer bg-transparent border-0">
+                            <a href="index.php?action=article&id=<?= $article['id'] ?>"
+                               class="btn btn-primary w-100">Lire la suite</a>
+                        </div>
+                    </div>
+                </div>
+
+            <?php endforeach; ?>
+        </div>
+
+        <?php else: ?>
+            <p class="text-center text-muted">Aucun article pour le moment sur cette destination.</p>
+        <?php endif; ?>
+
+    </div>
+</section>

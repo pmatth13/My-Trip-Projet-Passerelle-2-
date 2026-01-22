@@ -1,3 +1,7 @@
+<div class="container py-5">
+    <div class="row justify-content-center">
+        <div class="col-lg-8">
+
 <?php if (!$article): ?>
     <h2>Article non trouvé</h2>
     <p>Désolé, cet article n'existe pas ou a été supprimé.</p>
@@ -73,3 +77,7 @@
     </article>
 
 <?php endif; ?>
+
+        </div>
+    </div>
+</div>

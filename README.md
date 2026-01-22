@@ -69,3 +69,9 @@ Feuille de route :
 31. Création du model/CommentManahger.php
 32. Modification de articleController(); pour récupérer les commentaire et les affichers dans View. 
 33. Modification de articleView.php pour afficher les commentaires
+34. Creation de la partie frontend
+    - Design la navbar 
+    - Design la homePage 
+    - Ajout d'une boucle Php pour faire defiler les articles
+35. Configuration de TinyMCE par aide de LLM
+36. Modification des controller pour chaque destination afin de récupérer les articles correspondants pour chaque pays

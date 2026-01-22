@@ -1,0 +1,171 @@
+@charset "UTF-8";
+body {
+  background-image: linear-gradient(to top right, #a8edea 31%, #f2e9a6 100%);
+  background-attachment: fixed;
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+}
+
+.navbar-logo {
+  height: 120px;
+  width: auto;
+}
+
+.navbar-nav {
+  align-items: center;
+}
+
+/* -- J'ai stylisé le bouton navbar */
+.navbar-toggler[aria-expanded=true] span:nth-child(1) {
+  transform: rotate(45deg) translate(6px, 6px);
+}
+
+.navbar-toggler[aria-expanded=true] span:nth-child(2) {
+  opacity: 0;
+}
+
+.navbar-toggler[aria-expanded=true] span:nth-child(3) {
+  transform: rotate(-45deg) translate(6px, -6px);
+}
+
+.navbar-dark {
+  background-color: transparent;
+}
+
+.navbar-toggler-icon {
+  border: none;
+  background: transparent;
+  display: block;
+  width: 28px;
+  height: 3px;
+  background-color: #638a9e;
+  margin: 6px 0;
+  border-radius: 5px;
+  transition: 0.3s;
+}
+
+@media (max-width: 991.98px) {
+  .navbar .container-fluid {
+    position: relative;
+  }
+  .navbar-collapse {
+    position: absolute;
+    top: 100%;
+    right: 0;
+    left: auto;
+    width: auto;
+    min-width: 200px;
+    padding: 1rem;
+    border-radius: 8px;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+  }
+}
+.nav-link {
+  font-size: 1.25rem;
+  font-weight: 500;
+  color: #638a9e;
+  padding: 0.5rem 1rem;
+  transition: all 0.3s ease;
+  border-radius: 5px;
+}
+.nav-link:hover {
+  color: #f5576c;
+  background-color: rgba(255, 255, 255, 0.1);
+  transform: translateY(-2px);
+}
+
+.nav-btn {
+  border: 2px solid #638a9e;
+}
+
+.nav-home {
+  font-weight: 900;
+  font-style: italic;
+  text-transform: uppercase;
+}
+
+/* --------------------------------------------- Page Pays (Philippines, etc.) ----------------------------------------------- */
+.country-hero .hero-image {
+  border: 5px solid #638a9e;
+  border-radius: 10px;
+}
+
+.country-video .video-frame {
+  border: 5px solid #638a9e;
+  border-radius: 10px;
+  overflow: hidden;
+}
+
+/* --------------------------------------------- Page d'accueil--------------------------------------------------------------- */
+.profile-section {
+  padding: 4rem 0;
+}
+.profile-section .profile-image-container {
+  display: inline-block;
+}
+.profile-section .profile-image {
+  width: 300px;
+  height: 300px;
+  border-radius: 50%;
+  -o-object-fit: cover;
+     object-fit: cover;
+  border: 5px solid #638a9e;
+  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
+  transition: transform 0.3s ease;
+}
+.profile-section .profile-image:hover {
+  transform: scale(1.05);
+}
+.profile-section h1 {
+  color: #2c3e50;
+  font-weight: bold;
+  font-size: 2.5rem;
+}
+.profile-section .lead {
+  font-size: 1.2rem;
+  line-height: 1.8;
+}
+
+/* ---------------------------------------------Style des cards------------------------------------------------------------- */
+.articles-section .article-card {
+  border: none;
+  border-radius: 10px;
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+  transition: all 0.3s ease;
+  overflow: hidden;
+}
+.articles-section .article-card:hover {
+  transform: translateY(-10px);
+  box-shadow: 0 8px 20px rgba(0, 0, 0, 0.2);
+}
+.articles-section .article-card .card-img-top {
+  height: 200px;
+  -o-object-fit: cover;
+     object-fit: cover;
+  border-radius: 10px 10px 0 0;
+}
+.articles-section .article-card .card-title {
+  color: #2c3e50;
+  font-weight: bold;
+  font-size: 1.2rem;
+}
+.articles-section .article-card .card-text {
+  color: #666;
+  line-height: 1.6;
+}
+.articles-section .article-card .card-footer {
+  padding: 1rem;
+}
+.articles-section .article-card .card-footer .btn-primary {
+  background-color: #638a9e;
+  border: none;
+  padding: 0.75rem;
+  font-weight: 600;
+  border-radius: 5px;
+  transition: all 0.3s ease;
+}
+.articles-section .article-card .card-footer .btn-primary:hover {
+  background-color: rgb(78.9802371542, 110.7351778656, 127.0197628458);
+  transform: scale(1.05);
+}/*# sourceMappingURL=style.css.map */
