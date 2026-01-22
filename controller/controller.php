@@ -1,9 +1,10 @@
 <?php
 
-    // Import des modèles nécessaire 
+    // Import des modèles nécessaire
     require_once 'model/Manager.php';
     require_once 'model/UserManager.php';
     require_once 'model/ArticleManager.php';
+    require_once 'model/CommentManager.php';
 
     // Fonction pour vérifier la connexion
     function isConnected(){
@@ -193,6 +194,10 @@
         $articleManager = new ArticleManager();
         $article = $articleManager->getArticleById($id);
 
+        // Récupère les commentaires de l'article
+        $commentManager = new CommentManager();
+        $comments = $commentManager->getCommentsByArticle($id);
+
         //Afficher la vue
         $viewFile = 'view/articleView.php';
         require 'view/base.php';
@@ -274,5 +279,60 @@
         }
     }
 
+/* --------------------------------------------------------Gestion des commentaires----------------------------------------------------- */
 
+    function addCommentController(){
 
+        // Vérifier que l'utilisateur est connecté
+        isConnected();
+
+        // Vérifier que les données POST ont été envoyées
+        if (!empty($_POST) && isset($_POST['content']) && isset($_POST['article_id'])) {
+
+            $content = trim($_POST['content']);
+            $article_id = $_POST['article_id'];
+            $author_id = $_SESSION['user_id'];
+
+            // Vérifier que le contenu n'est pas vide
+            if (!empty($content)) {
+                $commentManager = new CommentManager();
+                $commentManager->createContent($content, $article_id, $author_id);
+            }
+
+            // Rediriger vers l'article
+            header('Location: index.php?action=article&id=' . $article_id);
+            exit;
+
+        } else {
+            // Pas de données -> Redirection vers la liste d'articles
+            header('Location: index.php?action=articles');
+            exit;
+        }
+    }
+
+    function deleteCommentController(){
+
+        // Vérifier que l'utilisateur est connecté
+        isConnected();
+
+        // Récupérer l'ID du commentaire et de l'article depuis l'URL
+        if (isset($_GET['id']) && isset($_GET['article_id'])) {
+
+            $comment_id = $_GET['id'];
+            $article_id = $_GET['article_id'];
+            $user_id = $_SESSION['user_id'];
+
+            // Supprimer le commentaire
+            $commentManager = new CommentManager();
+            $commentManager->deleteComment($comment_id, $user_id);
+
+            // Rediriger vers l'article
+            header('Location: index.php?action=article&id=' . $article_id);
+            exit;
+
+        } else {
+            // Pas d'ID -> Redirection vers la liste d'articles
+            header('Location: index.php?action=articles');
+            exit;
+        }
+    }

@@ -71,6 +71,14 @@
             deleteArticleController();
             break;
 
+        case 'add_comment':
+            addCommentController();
+            break;
+
+        case 'delete_comment':
+            deleteCommentController();
+            break;
+
         default:
             errorController();
             break;

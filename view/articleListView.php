@@ -14,10 +14,12 @@
             </p>
             
             <p>
-                <?php 
-                    // Afficher les 200 premiers caractères du contenu
-                    $excerpt = substr($article['content'], 0, 200);
-                    echo htmlspecialchars($excerpt) . '...';
+                <?php
+                    // Garder les balises de formatage, retirer les autres
+                    $allowedTags = '<strong><em><u><b><i><span>';
+                    $cleanContent = strip_tags($article['content'], $allowedTags);
+                    $excerpt = substr($cleanContent, 0, 250);
+                    echo $excerpt . '...';
                 ?>
             </p>
             

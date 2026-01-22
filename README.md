@@ -62,4 +62,10 @@ Feuille de route :
     - Ajout de la function deleteArticle(); dans ArticleManager.php
     - Création du controller deleteArticleController(); 
     - Ajout au routeur index.php
-29. 
+29. Après réflexion : Intégration de TinyMCE pour finaliser l'éditeur d'article
+    - création d'un compte pour récupérer une clé API
+    - Intégration du script dans createArticleView.php
+30. Création de la table Comments pour gérer les commentaires users
+31. Création du model/CommentManahger.php
+32. Modification de articleController(); pour récupérer les commentaire et les affichers dans View. 
+33. Modification de articleView.php pour afficher les commentaires
